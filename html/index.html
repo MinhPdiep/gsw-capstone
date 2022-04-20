@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel='stylesheet' type='text/css' href='/public/css/main.css' />
+    <link rel="stylesheet" href="C:/Users/diepm/OneDrive/Desktop/Example/public/cssmain.css">
+    <style>
+      .image{
+  margin: 0;
+  padding: 0;
+  float: left;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.image > div{
+  height: 500px;
+  width: 100%;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.5s ease-in;
+}
+.image >div:hover{
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+.img1{
+    background: url(pic/1.jpg);
+}
+.img2{
+    background: url(pic/2.jpg);
+}.img3{
+    background: url(pic/3.jpg);
+}.img4{
+    background: url(pic/4.jpg);
+}
+.image div h2 {
+  color: white;
+  font-size: 45px;
+
+}
+.image div .hover{
+  display: none;
+}
+.image div:hover .hover{
+  display: inline-block;
+}
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo"><span>EX</span>plore SouthEast Asia</a>
+      <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="about_us.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+        <a href="flight.html" id="Flight">Find Flight</a>
+        <a href="http://127.0.0.1:8888/" id="Chat">Chat</a>
+      </nav>
+    </header>
+    <div class="mainPicture">
+    <img src="pic/asia.jpg" alt="SEA" style="width:100%;"
+    height="750">
+    <div class="top-left"><strong>WHY IS SEA SO SPECIAL?</strong></div>
+      <div class="button1">
+        <a class="btn btn-outline-dark" href="pg0.html"><strong>LEARN MORE</strong></a>
+    </div>
+  </div>
+
+      <div class="image">
+        <div class="img1">
+         <h2>PICK YOUR BEST COUNTRY</h2>
+        <div class="hover">
+          <a  class="btn btn-outline-light" href="pg1.html"><strong>EXPLORE</strong></a>
+        </div>
+        </div>
+         <div class="img2">
+          <h2>TIPS FOR YOUR TRIP</h2>
+          <div class="hover">
+          <a  class="btn btn-outline-light" href="pg2.html"><strong>EXPLORE</strong></a>
+        </div>
+        </div>
+         <div class="img3">
+          <h2>SAFE TRAVELS IN 2022</h2>
+            <div class="hover">
+          <a  class="btn btn-outline-light" href="pg3.html"><strong>EXPLORE</strong></a>
+        </div>
+        </div>
+         <div class="img4">
+          <h2>BEST TIME TO VISIT<h2>
+            <div class="hover">
+           <a  class="btn btn-outline-light" href="pg4.html"><strong>EXPLORE</strong></a>
+        </div>
+        </div>
+  </div>
+
+    <script type="text/javascript">
+      var formBtn = document.querySelector('#login-btn');
+      var loginForm = document.querySelector('.login-form-container');
+      var formClose = document.querySelector('#form-close');
+      formBtn.addEventListener('click', login);
+      function login() {
+        loginForm.classList.add('active');
+      }
+      formBtn.addEventListener('click', close);
+      function close() {
+        loginForm.classList.remove('active');
+      }
+    </script>
+    <footer>
+  	<p>Copyright &copy; 2022 Minh Phong Diep</p>
+  </footer>
+  </body>
+
+</html>

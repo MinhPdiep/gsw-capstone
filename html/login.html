@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login	</title>
+		<link rel='stylesheet' type='text/css' href='/css/main.css' />
+		<link rel="stylesheet" type="text/css" href="c:/users/diepm/onedrive/desktop/example/css/main.css">
+		<style>
+			input{
+				height: 30px;
+				width: 250px;
+			}
+			#loginBtn{
+				background-color: #333;
+				color:white;
+			}
+		</style>
+
+	</head>
+	<body class="body">
+		<header>
+			<a href="index.html" class="logo"><span>EX</span>plore SouthEast Asia</a>
+			<nav class="navbar">
+				<a href="index.html">Home</a>
+				<a href="about_us.html">About</a>
+				<a href="contact.html">Contact</a>
+				<a href="login.html">Login</a>
+				<a href="flight.html" id="Flight">Find Flight</a>
+				<a href="http://127.0.0.1:8888/" id="Chat">Chat</a>
+			</nav>
+		</header>
+<div class="navField">
+  <div class="navHeading">
+    <p ><strong><center>User Login</center></strong><p>
+   </div>
+  <div class="textfield">
+
+<div class="lgincontainer">
+    <center><input id="username" placeholder="Username"></center><br>
+    <center><input id="password" placeholder="Password"></center><br>
+    <center><button id="loginBtn" class="btn">Login</button></center>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+var loginBtn = document.getElementById("loginBtn");
+var objUser =[
+{
+		user: "spring",
+	pass: "2022"
+},
+{
+		user: "web",
+	pass: "develop"
+},
+			{
+					user: "Minh",
+				pass: "Diep"
+}
+]
+loginBtn.addEventListener("click",logIn);
+function logIn() {
+	var username = document.getElementById("username").value;
+	var password = document.getElementById("password").value;
+	for (i=0; i < objUser.length; i++){
+		if(username == objUser[i].user && password == objUser[i].pass){
+				alert('Logged in!');
+				window.location = 'index.html';
+				return
+		}
+	}
+		alert('Invalid username or password!');
+		window.location = 'login.html';
+}
+</script>
+<footer>
+<p>Copyright &copy; 2022 Minh Phong Diep</p>
+</footer>
+	</body>
+	</html>

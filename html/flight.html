@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Flight</title>
+		<link rel='stylesheet' type='text/css' href='/css/main.css' />
+		<link rel="stylesheet" type="text/css" href="/public/css/main.css">
+		<style media="screen">
+			select{
+				font-size: 20px;
+				text-align: center;
+				width: 150px;
+			}
+
+			#from{
+				width: 500px;
+			}
+			
+			input{
+				
+				height: 30px;
+			}
+			.textfield > .flcontainer{
+				font-size: 20px;
+			}
+			#submit{
+				padding: 5px;
+				width: 100px;
+				font-size: 20px;
+				height: 50px;
+			}
+			.btn{
+				background-color: #333;
+				color: white;
+			}
+			
+	#box{
+		font-weight: 900;
+		font-size: 30px;
+		margin: 0 0 50px 0;
+	}
+table, th, td{
+	
+	font-size: 25px;
+	text-align: center;
+	padding: 25px;
+}
+
+thead{
+	
+	background-color: #333;
+	color:white;
+}
+ table{
+	border: 3px solid #333;
+		width: 100%;
+}
+td{
+	width: 150px;
+}
+		</style>
+	</head>
+<body>
+	<header>
+		<a href="index.html" class="logo"><span>EX</span>plore SouthEast Asia</a>
+		<nav class="navbar">
+			<a href="index.html">Home</a>
+			<a href="about_us.html" >About</a>
+			<a href="contact.html">Contact</a>
+			<a href="login.html">Login</a>
+			<a href="#" id="Flight">Find Flight</a>
+			<a href="http://127.0.0.1:8888/" id="Chat">Chat</a>
+		</nav>
+</header>
+<div class="navField">
+  <div class="navHeading">
+		<p ><strong><center>Flight Information</center></strong><p>
+	 </div>
+  <div class="textfield">
+		<div class="flcontainer">
+		<center><div id="box">
+			<span  style="display: inline-block;">
+	    	<label>From:</label>
+	  		<input id="from" type="text" placeholder="Search for Your Flight. . . ." name="depart">
+	    </span>
+
+<button id="submit" class="btn">Search</button><br>
+<div class="container">
+<input type="radio" id="depart" name="fav_language" value="Depart">
+<label for="html">Depart City</label>
+
+<input type="radio" id="arrive" name="fav_language" value="Arive">
+<label for="css">Destination City</label>
+
+<input type="radio" id="departD" name="fav_language" value="DepartD">
+<label for="html">Depart Date</label>
+
+<input type="radio" id="retD" name="fav_language" value="RetD">
+<label for="html">Return Date</label>
+
+<input type="radio" id="airfare" name="fav_language" value="Airfare">
+<label for="html">Airfares</label> <br>
+<button id="sort" class="btn">Sort</button><br>
+</div></center>
+<div class="data-tables">
+			 <table id="table" class="text-center" >
+						 <thead>
+								 <th>Flight Code</th>
+								 <th>Depart City</th>
+				    			 <th>Destination City</th>
+								 <th>Depart Date</th>
+								 <th>Return Date</th>
+								 <th>Airfares</th>
+					 </thead>
+					 <tbody>
+
+					 </tbody>
+		    </table>
+
+ </div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',function(){
+	fetch('http://localhost:5000/getAll')
+	.then(response => response.json())
+	.then(data=> loadHTMLTable(data['data']));
+	
+})
+function loadHTMLTable(data){
+	const table = document.querySelector('table tbody');
+	if (data.length == 0){
+		table.innerHTML="<tr><td class='no-data' colspan='6'>No Result . . . </td></tr>";
+		return;
+	}
+	let tableHtml = "";
+	data.forEach(function({FLIGHT_CODE, DEPART_LOCATION, ARRIVE_LOCATION, DEPART_DATE, ARRIVE_DATE, AIRLINE}) {
+  	tableHtml += `<tr>`;
+	tableHtml += `<td>${FLIGHT_CODE}</td>`;
+	tableHtml += `<td>${DEPART_LOCATION}</td>`;
+	tableHtml += `<td>${ARRIVE_LOCATION}</td>`;
+	//tableHtml += `<td>${new Date(DEPART_DATE).toLocaleString('en', {month: 'numeric',day: 'numeric',year: 'numeric',})}</td>`;
+	tableHtml += `<td>${new Date(DEPART_DATE).toISOString().slice(0, 11).replace('T', ' ')}</td>`;
+	tableHtml += `<td>${new Date(ARRIVE_DATE).toISOString().slice(0, 10).replace('T', ' ')}</td>`;
+	tableHtml += `<td>${AIRLINE}</td>`;
+	tableHtml += `</tr>`;
+	});
+	table.innerHTML = tableHtml;
+}
+const sortBtn = document.querySelector('#sort');
+
+sortBtn.onclick=function(){
+	if(document.getElementById('depart').checked){
+	fetch('http://localhost:5000/sortDes')
+	.then(response => response.json())
+	.then(data=> loadHTMLTable(data['data']));
+	
+
+}
+}
+const searchBtn = document.querySelector('#submit');
+
+searchBtn.onclick = function(){
+	if(document.getElementById('depart').checked){
+const searchValue = document.querySelector('#from').value;
+fetch('http://localhost:5000/search/'+ searchValue)
+.then(response=>response.json())
+.then(data => loadHTMLTable(data['data']));
+}
+else if (document.getElementById('arrive').checked){
+	const searchValue = document.querySelector('#from').value;
+    fetch('http://localhost:5000/searchdes/'+ searchValue)
+    .then(response=>response.json())
+    .then(data => loadHTMLTable(data['data']));
+}
+else if (document.getElementById('airfare').checked){
+	const searchValue = document.querySelector('#from').value;
+    fetch('http://localhost:5000/searchairf/'+ searchValue)
+    .then(response=>response.json())
+    .then(data => loadHTMLTable(data['data']));
+}
+
+else if (document.getElementById('departD').checked){
+	const searchValue = document.querySelector('#from').value;
+    fetch('http://localhost:5000/searchdate/'+ searchValue)
+    .then(response=>response.json())
+    .then(data => loadHTMLTable(data['data']));
+}
+
+else if (document.getElementById('retD').checked){
+	const searchValue = document.querySelector('#from').value;
+    fetch('http://localhost:5000/searchretD/'+ searchValue)
+    .then(response=>response.json())
+    .then(data => loadHTMLTable(data['data']));
+}
+}
+
+</script>
+  </div>
+		</div>
+</div>
+<footer>
+<p>Copyright &copy; 2022 Minh Phong Diep</p>
+</footer>
+	</body>
+	</html>
+ 
