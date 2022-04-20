@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+*{
+  font-family: 'Nunito', sans-serif;
+  text-decoration: none;
+
+}
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.btn{
+  display: inline-block;
+  margin-top: 1rem;
+  color: black;
+  padding: .8rem 3rem;
+  border: .9rem solid balck;
+  font-size: 1.7rem;
+  background: white;
+}
+header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: #333;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 9%;
+}
+header .logo{
+  font-size: 3rem;
+  font-weight: bolder;
+  color: #fff;
+  text-transform: uppercase;
+}
+header .logo span{
+color: orange;
+text-transform: uppercase;
+}
+header .navbar a{
+  color: #fff;
+  font-size: 2rem;
+  margin: 0 .8rem;
+}
+
+.mainPicture {
+  
+  font-size: 100px;
+}
+.top-left {
+  position: absolute;
+  top: 30%;
+  left: 30px;
+  color: white;
+}
+.button1 {
+  position: absolute;
+  top: 40%;
+  left: 30px;
+}
+ .titlePicture {
+  position: relative;
+  text-align: center;
+  color: black;
+  font-size: 60px;
+  font-family: all;
+}
+ .title {
+  position: absolute;
+  top:  50%;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, -50%);
+}
+.field {
+  margin: 0 5% 5% 5%;
+  border: 3px solid  #bbc1c7;
+ box-shadow: 10px 10px 20px black;
+
+}
+.field > .textfield{
+  padding: 20px 30px;
+  background: white;
+  font-size: 25px;
+
+}
+.navField > .navHeading{
+  font-size: 80px;
+  padding: 3px;
+  background: white;
+
+}
+.navField .navHeading > p{
+  margin-left: 3%;
+}
+.navField {
+  margin: 2% 5% 0 5%;
+  border: 5px solid  #bbc1c7;
+ box-shadow: 15px 15px 15px black;
+
+}
+.navField > .textfield{
+  padding: 10px 30px;
+  background: white;
+  font-size: 30px;
+
+}
+.navField .textfield .airlinePic{
+   display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 10%;
+  margin-right: 10%;
+
+}
+.sharing img{
+  float: right;
+  margin-right: 5%;
+}
+
+.icon > img{
+  display: grid;
+  margin-left: 10%;
+}
+.icon > a{
+  display: grid;
+  margin-left: 10%;
+}
+.titlePicture{
+  margin-top: 5%;
+}
+
+.navField .textfield .flcontainer input{
+padding: 1rem 2rem;
+font-size: 1.7rem;
+margin: .6rem 0;
+text-transform: none;
+}
+
+footer {
+  font-size: 15px;
+  float: right;
+  padding: 2px;
+  color: black;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+#Chat{
+  border: 0.7rem solid orange;
+  color: white;
+  background-color: orange;
+  font-weight: bold;
+  border-radius: 8px;
+}
+.container label{
+  margin: 10px 20px 0 20px;
+  font-size: large;
+}
+.container input{
+  width: 16px;
+  height: 16px;
+}
